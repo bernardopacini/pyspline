@@ -36,7 +36,7 @@ steps:
 - script: cp -r /home/mdolabuser/repos .
   target:
     container: builder
--script: cd pyspline && testflo -v .
+- script: cd pyspline && testflo -v .
 - task: Docker@2
   inputs:
     command: stop
