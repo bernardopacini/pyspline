@@ -16,16 +16,9 @@ jobs:
 
   steps:
   - script: ls /home/mdolabuser/repos && pwd
-  - task: Docker@2
-    # inputs:
-    #   command: start
-    #   container: mdolab/public:$(DOCKER_TAG)
-    inputs:
-      command: login
-
-  - script: docker run -t -d --name app --mount "type=bind,src=$(pwd),target=$(DOCKER_MOUNT_DIR)" mdolab/public:$(DOCKER_TAG) /bin/bash
+  # - script: docker run -t -d --name app --mount "type=bind,src=$(pwd),target=$(DOCKER_MOUNT_DIR)" mdolab/public:$(DOCKER_TAG) /bin/bash
   # We thrown away the existing repo in Docker, and copy the new one in-place
-  - script: rm -rf $(DOCKER_WORKING_DIR) && cp -r . $(DOCKER_WORKING_DIR)
+  # - script: rm -rf $(DOCKER_WORKING_DIR) && cp -r . $(DOCKER_WORKING_DIR)
   - script: . \$HOME/.bashrc_mdolab && cd $(DOCKER_WORKING_DIR) && cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk && make;
   - script: . \$HOME/.bashrc_mdolab && cd $(DOCKER_WORKING_DIR) && pip install .
   - script: . \$HOME/.bashrc_mdolab && cd $(DOCKER_WORKING_DIR) && testflo . -v
