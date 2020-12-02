@@ -30,7 +30,7 @@
 resources:
   containers:
   - container: builder
-    image: ubuntu:18.04
+    image: mdolab/public:u18-gcc-ompi-stable
 steps:
 - script: touch ./test.txt
   target:
