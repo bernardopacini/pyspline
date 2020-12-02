@@ -27,11 +27,15 @@
 #   workspace:
 #     clean: all
 
-pool:
-  vmImage: 'ubuntu-18.04'
-
-container: ubuntu:18.04
-
+resources:
+  containers:
+  - container: builder
+    image: ubuntu:18.04
 steps:
-- script: apt install docker.io
-- script: docker
+- script: echo "I can run inside the container (it starts by default)"
+  target:
+    container: builder
+- task: Docker@2
+  inputs:
+    command: stop
+    container: builder
