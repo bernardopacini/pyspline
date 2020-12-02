@@ -13,7 +13,7 @@ jobs:
 - job:
   container:
     image: mdolab/public:$(DOCKER_TAG)
-    options: -u 0
+    options: -t -d -u 0
 
   steps:
   - script: ls -a /home/mdolabuser && pwd
