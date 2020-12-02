@@ -15,7 +15,7 @@ jobs:
     options: -u 0
 
   steps:
-  - script: ls && pwd
+  - script: ls /home/mdolabuser/repos && pwd
   - script: docker run -t -d --name app --mount "type=bind,src=$(pwd),target=$DOCKER_MOUNT_DIR" mdolab/public:$DOCKER_TAG /bin/bash
   # We thrown away the existing repo in Docker, and copy the new one in-place
   - script: docker exec -it app /bin/bash -c "rm -rf $DOCKER_WORKING_DIR && cp -r $DOCKER_MOUNT_DIR $DOCKER_WORKING_DIR"
