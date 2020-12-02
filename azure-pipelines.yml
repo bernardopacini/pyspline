@@ -31,7 +31,7 @@ resources:
   containers:
   - container: builder
     image: mdolab/public:u18-gcc-ompi-stable
-    options: -u 0
+    options: -u mdolabuser
 steps:
 - script: touch ./test.txt
   target:
