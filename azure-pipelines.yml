@@ -1,4 +1,5 @@
-vmImage: 'Ubuntu 18.04'
+pool:
+  vmImage: ubuntu-18.04
 
 variables:
   REPO_NAME: pyspline
