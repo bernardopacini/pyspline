@@ -33,7 +33,7 @@ resources:
     image: mdolab/public:u18-gcc-ompi-stable
     options: -u 0
 steps:
-- script: touch /home/mdolabuser/repos/test.txt
+- script: cp -r /home/mdolabuser/repos/test.txt .
   target:
     container: builder
 - task: Docker@2
