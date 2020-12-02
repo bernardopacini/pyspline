@@ -33,4 +33,4 @@ pool:
 container: ubuntu:18.04
 
 steps:
-- script: printenv
+- script: docker
