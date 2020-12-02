@@ -32,7 +32,7 @@ resources:
   - container: builder
     image: ubuntu:18.04
 steps:
-- script: echo "I can run inside the container (it starts by default)"
+- script: touch ./test.txt
   target:
     container: builder
 - task: Docker@2
