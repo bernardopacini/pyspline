@@ -21,7 +21,7 @@ jobs:
   # We thrown away the existing repo in Docker, and copy the new one in-place
   # - script: rm -rf $(DOCKER_WORKING_DIR) && cp -r . $(DOCKER_WORKING_DIR)
   # - script: . $(HOME)/.bashrc_mdolab && cd $(DOCKER_WORKING_DIR) && cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk && make;
-  - script: . $(HOME)/.bashrc_mdolab && cd $(DOCKER_WORKING_DIR) && pip install .
+  # - script: . $(HOME)/.bashrc_mdolab && cd $(DOCKER_WORKING_DIR) && pip install .
   - script: . $(HOME)/.bashrc_mdolab && cd $(DOCKER_WORKING_DIR) && testflo . -v
   # - script: docker rm -f app
   workspace:
