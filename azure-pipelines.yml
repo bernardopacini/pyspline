@@ -33,4 +33,5 @@ pool:
 container: ubuntu:18.04
 
 steps:
+- script: apt install docker.io
 - script: docker
