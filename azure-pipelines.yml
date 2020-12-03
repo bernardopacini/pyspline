@@ -12,7 +12,6 @@ jobs:
     vmImage: 'ubuntu-latest'
   container:
     image: mdolab/public:$(DOCKER_TAG)
-    options: -u 0
   steps:
   - script: ls && ls -a /home/mdolabuser && pwd
   # - script: rm -rf $(DOCKER_WORKING_DIR) && cp -r . $(DOCKER_WORKING_DIR)
