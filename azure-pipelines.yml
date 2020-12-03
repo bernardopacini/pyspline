@@ -12,11 +12,11 @@ jobs:
     vmImage: 'ubuntu-latest'
   container:
     image: mdolab/public:$(DOCKER_TAG)
-    options: -u root
+    options: --user 0:0
   steps:
   - script: ls && ls -a /home/mdolabuser && pwd
   - script: printenv
-  # - script: rm -rf $(DOCKER_WORKING_DIR) && cp -r . $(DOCKER_WORKING_DIR)
+  - script: rm -rf $(DOCKER_MOUNT_DIR) && cp -r . $(DOCKER_MOUNT_DIR)
   # - script: . $(HOME)/.bashrc_mdolab && cd $(DOCKER_WORKING_DIR) && cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk && make;
   # - script: . $(HOME)/.bashrc_mdolab && cd $(DOCKER_WORKING_DIR) && pip install .
   - script: . $(HOME)/.bashrc_mdolab && cd $(DOCKER_WORKING_DIR) && testflo . -v
