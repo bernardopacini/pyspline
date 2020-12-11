@@ -27,17 +27,19 @@ jobs:
         mdolab/public:$(DOCKER_TAG)
         /bin/bash
   - script: docker exec app /bin/bash -c "rm -rf ${{ variables.DOCKER_WORKING_DIR }} && cp -r ${{ variables.DOCKER_MOUNT_DIR }} ${{ variables.DOCKER_WORKING_DIR }}"
-  - script: docker exec app /bin/bash -c ". \$MDOLABUSER/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk && make";
-  - script: docker exec app /bin/bash -c ". \$MDOLABUSER/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && pip install ."
-  - script: docker exec app /bin/bash -c ". \$MDOLABUSER/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && testflo . -v"
+  - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk && make";
+  - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && pip install ."
+  - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && testflo . -v"
   - script: docker rm -f app
 
 - job: flake8
   steps:
+  - script: python -m pip install -U pip
   - script: pip install flake8
   - script: flake8 . --count --show-source --statistics
 
 - job: black
   steps:
+  - script: python -m pip install -U pip
   - script: pip install black==20.8b1
   - script: black . --check --diff -l 120
