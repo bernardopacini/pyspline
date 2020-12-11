@@ -12,7 +12,7 @@ import unittest
 # =============================================================================
 # Extension modules
 # =============================================================================
-from pyspline import pySpline
+# from pyspline import pySpline
 from baseclasses import BaseRegTest
 
 baseDir = os.path.dirname(os.path.abspath(__file__))

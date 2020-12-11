@@ -18,11 +18,6 @@ jobs:
         --mount "type=bind,src=$(pwd),target=${{ variables.DOCKER_MOUNT_DIR }}"
         mdolab/public:${{ variables.DOCKER_TAG }}
         /bin/bash
-  - script: ls -a && pwd
-  - script: docker exec app /bin/bash -c "echo ${{ variables.DOCKER_WORKING_DIR }}"
-  - script: docker exec app /bin/bash -c "ls -a ${{ variables.DOCKER_WORKING_DIR }}"
-  - script: docker exec app /bin/bash -c "echo  ${{ variables.DOCKER_MOUNT_DIR }}"
-  - script: docker exec app /bin/bash -c "ls -a ${{ variables.DOCKER_MOUNT_DIR }}"
   - script: docker exec app /bin/bash -c "rm -rf ${{ variables.DOCKER_WORKING_DIR }} && cp -r ${{ variables.DOCKER_MOUNT_DIR }} ${{ variables.DOCKER_WORKING_DIR }}"
   - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk && make";
   - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && pip install ."
