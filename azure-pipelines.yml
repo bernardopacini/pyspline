@@ -1,6 +1,6 @@
 variables:
   REPO_NAME: pyspline
-  HOME: /home/mdolabuser/
+  MDOLABUSER: /home/mdolabuser/
   DOCKER_WORKING_DIR: /home/mdolabuser/repos/${{ variables.REPO_NAME }}
   DOCKER_MOUNT_DIR: /home/mdolabuser/travis/${{ variables.REPO_NAME }}
 
@@ -27,17 +27,17 @@ jobs:
         mdolab/public:$(DOCKER_TAG)
         /bin/bash
   - script: docker exec app /bin/bash -c "rm -rf ${{ variables.DOCKER_WORKING_DIR }} && cp -r ${{ variables.DOCKER_MOUNT_DIR }} ${{ variables.DOCKER_WORKING_DIR }}"
-  - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk && make";
-  - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && pip install ."
-  - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && testflo . -v"
+  - script: docker exec app /bin/bash -c ". \$MDOLABUSER/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk && make";
+  - script: docker exec app /bin/bash -c ". \$MDOLABUSER/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && pip install ."
+  - script: docker exec app /bin/bash -c ". \$MDOLABUSER/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && testflo . -v"
   - script: docker rm -f app
 
-- job:
+- job: flake8
   steps:
   - script: pip install flake8
-  - script: flake8 .
+  - script: flake8 . --count --show-source --statistics
 
-- job:
+- job: black
   steps:
   - script: pip install black==20.8b1
   - script: black . --check --diff -l 120
