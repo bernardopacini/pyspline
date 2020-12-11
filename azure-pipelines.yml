@@ -21,6 +21,8 @@ jobs:
   - script: ls -a && pwd
   - script: docker exec app /bin/bash -c "echo $DOCKER_WORKING_DIR"
   - script: docker exec app /bin/bash -c "ls -a $DOCKER_WORKING_DIR"
+  - script: docker exec app /bin/bash -c "echo $DOCKER_MOUNT_DIR"
+  - script: docker exec app /bin/bash -c "ls -a $DOCKER_WORKING_DIR"
   - script: docker exec app /bin/bash -c "rm -rf $DOCKER_WORKING_DIR && cp -r $DOCKER_MOUNT_DIR $DOCKER_WORKING_DIR"
   - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd $DOCKER_WORKING_DIR && cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk && make";
   - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd $DOCKER_WORKING_DIR && pip install ."
