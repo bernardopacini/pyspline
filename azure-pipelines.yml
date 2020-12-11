@@ -34,12 +34,12 @@ jobs:
 
 - job: flake8
   steps:
-  - script: python -m pip install -U pip
-  - script: pip install flake8
+  - script: python3 -m pip3 install -U pip
+  - script: pip3 install flake8
   - script: flake8 . --count --show-source --statistics
 
 - job: black
   steps:
-  - script: python -m pip install -U pip
-  - script: pip install black==20.8b1
+  - script: python3 -m pip3 install -U pip
+  - script: pip3 install black==20.8b1
   - script: black . --check --diff -l 120
