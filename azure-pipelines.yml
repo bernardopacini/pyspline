@@ -41,7 +41,7 @@ jobs:
 
 - job: flake8
   steps:
-  - checkout: mdolab/.github
+  - checkout: .github
   - script: |
       ls -a .github && ls -a ../
       cp .github/.flake8 .
