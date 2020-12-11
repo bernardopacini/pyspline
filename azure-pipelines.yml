@@ -31,3 +31,13 @@ jobs:
   - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && pip install ."
   - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && testflo . -v"
   - script: docker rm -f app
+
+- job:
+  steps:
+  - script: pip install flake8
+  - script: flake8 .
+
+- job:
+  steps:
+  - script: pip install black==20.8b1
+  - script: black -l 120 .
