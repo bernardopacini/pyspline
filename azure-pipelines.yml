@@ -7,6 +7,12 @@ variables:
 pool:
     vmImage: 'ubuntu-latest'
 
+resources:
+  repositories:
+  - repository: .github  # identifier (A-Z, a-z, 0-9, and underscore)
+    type: github  # see the following "Type" topic
+    name: mdolab/.github  # repository name (format depends on `type`)
+
 jobs:
 # - job:
 #   strategy:
