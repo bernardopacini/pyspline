@@ -9,7 +9,7 @@ pool:
 
 resources:
   repositories:
-  - repository: .github  # identifier (A-Z, a-z, 0-9, and underscore)
+  - repository: github_template  # identifier (A-Z, a-z, 0-9, and underscore)
     type: github  # see the following "Type" topic
     name: mdolab/.github  # repository name (format depends on `type`)
     endpoint: bernardopacini
@@ -41,9 +41,9 @@ jobs:
 
 - job: flake8
   steps:
-  - checkout: .github
+  - checkout: github_template
   - script: |
-      ls -a .github && ls -a ../
+      ls -a .github && ls -a .
       cp .github/.flake8 .
       python3 -m pip install -U pip
       pip3 install flake8
