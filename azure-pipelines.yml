@@ -42,7 +42,7 @@ jobs:
 - job: flake8
   steps:
   - script: |
-      ls -a && pwd
+      ls -a .github && pwd
       cp .github/.flake8 .
       python3 -m pip install -U pip
       pip3 install flake8
