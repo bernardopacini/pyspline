@@ -15,16 +15,16 @@ jobs:
   - script: docker pull mdolab/public:${{ variables.DOCKER_TAG }}
   - script: docker run -t -d 
         --name app
-        --mount "type=bind,src=$(pwd),target=${{ DOCKER_MOUNT_DIR }}"
+        --mount "type=bind,src=$(pwd),target=${{ variables.DOCKER_MOUNT_DIR }}"
         mdolab/public:${{ variables.DOCKER_TAG }}
         /bin/bash
   - script: ls -a && pwd
-  - script: docker exec app /bin/bash -c "echo ${{ DOCKER_WORKING_DIR }}"
-  - script: docker exec app /bin/bash -c "ls -a ${{ DOCKER_WORKING_DIR }}"
-  - script: docker exec app /bin/bash -c "echo  ${{ DOCKER_MOUNT_DIR }}"
-  - script: docker exec app /bin/bash -c "ls -a ${{ DOCKER_MOUNT_DIR }}"
-  - script: docker exec app /bin/bash -c "rm -rf ${{ DOCKER_WORKING_DIR }} && cp -r ${{ DOCKER_MOUNT_DIR }} ${{ DOCKER_WORKING_DIR }}"
-  - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ DOCKER_WORKING_DIR }} && cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk && make";
-  - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ DOCKER_WORKING_DIR }} && pip install ."
-  - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ DOCKER_WORKING_DIR }} && testflo . -v"
+  - script: docker exec app /bin/bash -c "echo ${{ variables.DOCKER_WORKING_DIR }}"
+  - script: docker exec app /bin/bash -c "ls -a ${{ variables.DOCKER_WORKING_DIR }}"
+  - script: docker exec app /bin/bash -c "echo  ${{ variables.DOCKER_MOUNT_DIR }}"
+  - script: docker exec app /bin/bash -c "ls -a ${{ variables.DOCKER_MOUNT_DIR }}"
+  - script: docker exec app /bin/bash -c "rm -rf ${{ variables.DOCKER_WORKING_DIR }} && cp -r ${{ variables.DOCKER_MOUNT_DIR }} ${{ variables.DOCKER_WORKING_DIR }}"
+  - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk && make";
+  - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && pip install ."
+  - script: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && testflo . -v"
   - script: docker rm -f app
