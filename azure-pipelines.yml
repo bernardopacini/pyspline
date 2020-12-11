@@ -11,9 +11,14 @@ jobs:
     vmImage: 'ubuntu-latest'
   strategy:
     matrix:
-      'u18-gcc-ompi-stable':
-        DOCKER_TAG: u18-gcc-ompi-stable
-
+      'c7-gcc-ompi-latest':
+        DOCKER_TAG: c7-gcc-ompi-latest
+      'c7-intel-impi-latest':
+        DOCKER_TAG: c7-intel-impi-latest
+      'u20-gcc-ompi-latest':
+        DOCKER_TAG: u20-gcc-ompi-latest
+      'u20-gcc-ompi-stable':
+        DOCKER_TAG: u20-gcc-ompi-stable
   steps:
   - script: docker pull mdolab/public:$(DOCKER_TAG)
   - script: docker run -t -d 
