@@ -40,4 +40,4 @@ jobs:
 - job:
   steps:
   - script: pip install black==20.8b1
-  - script: black -l 120 .
+  - script: black . --check --diff -l 120
