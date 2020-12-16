@@ -1,5 +1,6 @@
 variables:
   REPO_NAME: pyspline
+  COMPLEX: true
 
 pool:
     vmImage: 'ubuntu-latest'
@@ -15,4 +16,4 @@ jobs:
   - template: azure_template.yaml@azure_template
     parameters:
       REPO_NAME: ${{ variables.REPO_NAME }}
-      COMPLEX: true
+      COMPLEX: ${{ variables.COMPLEX }}
