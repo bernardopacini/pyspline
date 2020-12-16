@@ -14,4 +14,4 @@ resources:
 jobs: 
   - template: azure_template.yaml@azure_template
     parameters:
-      REPO_NAME: ${{ variables.REPO_NAME }}
+      REPO_NAME: ${{ variables.REPO_NAME }} 
