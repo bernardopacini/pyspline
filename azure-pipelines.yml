@@ -17,7 +17,7 @@ resources:
 # jobs: 
 template: azure_template.yaml@azure_template
   parameters:
-    REPO_NAME: ${{ variables.REPO_NAME }} 
+    REPO_NAME: ${{ variables.REPO_NAME }}
       # DOCKER_WORKING_DIR: ${{ variables.DOCKER_WORKING_DIR }}
       # DOCKER_MOUNT_DIR: ${{ variables.DOCKER_MOUNT_DIR}} 
 # - job:
