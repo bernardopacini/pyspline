@@ -13,7 +13,7 @@ resources:
     type: github  # see the following "Type" topic
     name: bernardopacini/.azure  # repository name (format depends on `type`)
     endpoint: bernardopacini
-
+ 
 jobs:
   - template: azure_template.yaml@azure_template
 
