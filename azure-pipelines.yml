@@ -1,6 +1,6 @@
 variables:
   REPO_NAME: pyspline
-  COMPLEX: true
+  COMPLEX: false
 
 pool:
     vmImage: 'ubuntu-latest'
