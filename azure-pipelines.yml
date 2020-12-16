@@ -16,7 +16,9 @@ resources:
  
 jobs:
   - template: azure_template.yaml@azure_template
-
+    parameters:
+      DOCKER_WORKING_DIR: ${{ variables.DOCKER_WORKING_DIR }}
+      DOCKER_MOUNT_DIR: ${{ variables.DOCKER_MOUNT_DIR}}
 # - job:
 #   strategy:
 #     matrix:
