@@ -1,8 +1,8 @@
 variables:
   REPO_NAME: pyspline
-  MDOLABUSER: /home/mdolabuser/
-  DOCKER_WORKING_DIR: /home/mdolabuser/repos/${{ variables.REPO_NAME }}
-  DOCKER_MOUNT_DIR: /home/mdolabuser/travis/${{ variables.REPO_NAME }}
+  # MDOLABUSER: /home/mdolabuser/
+  # DOCKER_WORKING_DIR: /home/mdolabuser/repos/${{ variables.REPO_NAME }}
+  # DOCKER_MOUNT_DIR: /home/mdolabuser/travis/${{ variables.REPO_NAME }}
 
 pool:
     vmImage: 'ubuntu-latest'
@@ -17,8 +17,9 @@ resources:
 jobs: 
   - template: azure_template.yaml@azure_template
     parameters:
-      DOCKER_WORKING_DIR: ${{ variables.DOCKER_WORKING_DIR }}
-      DOCKER_MOUNT_DIR: ${{ variables.DOCKER_MOUNT_DIR}} 
+      REPO_NAME: ${{ variables.REPO_NAME }}
+      # DOCKER_WORKING_DIR: ${{ variables.DOCKER_WORKING_DIR }}
+      # DOCKER_MOUNT_DIR: ${{ variables.DOCKER_MOUNT_DIR}} 
 # - job:
 #   strategy:
 #     matrix:
