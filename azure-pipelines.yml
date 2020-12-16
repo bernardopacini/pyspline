@@ -14,7 +14,7 @@ resources:
     name: bernardopacini/.azure  # repository name (format depends on `type`)
     endpoint: bernardopacini
   
-jobs:
+jobs: 
   - template: azure_template.yaml@azure_template
     parameters:
       DOCKER_WORKING_DIR: ${{ variables.DOCKER_WORKING_DIR }}
