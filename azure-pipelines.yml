@@ -3,7 +3,7 @@ variables:
   COMPLEX: false
   GCC_CONFIG: config/defaults/config.LINUX_GFORTRAN.mk
   INTEL_CONFIG: config/defaults/config.LINUX_INTEL.mk
-  INPUT_FILES: false
+  INPUT_FILES: false 
 
 pool:
     vmImage: 'ubuntu-latest'
