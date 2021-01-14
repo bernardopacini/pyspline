@@ -41,4 +41,3 @@ extends:
   #   parameters:
   #     REPO_NAME: ${{ variables.REPO_NAME }}
   #     STYLE_CHECK: ${{ variables.STYLE_CHECK }}
- 
