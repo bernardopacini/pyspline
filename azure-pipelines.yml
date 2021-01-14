@@ -1,13 +1,3 @@
-variables:
-  REPO_NAME: pyspline
-  COMPLEX: false
-  GCC_CONFIG: config/defaults/config.LINUX_GFORTRAN.mk
-  INTEL_CONFIG: config/defaults/config.LINUX_INTEL.mk
-  INPUT_FILES: false 
-
-pool:
-    vmImage: 'ubuntu-latest'
-
 resources:
   repositories:
   - repository: azure_template
@@ -15,11 +5,40 @@ resources:
     name: bernardopacini/.azure
     endpoint: bernardopacini
 
-jobs:
-  - template: azure_template.yaml@azure_template
-    parameters:
-      REPO_NAME: ${{ variables.REPO_NAME }}
-      COMPLEX: ${{ variables.COMPLEX }}
-      GCC_CONFIG: ${{ variables.GCC_CONFIG }}
-      INTEL_CONFIG: ${{ variables.INTEL_CONFIG }}
-      INPUT_FILES: ${{ variables.INPUT_FILES }}
+pool:
+    vmImage: 'ubuntu-latest'
+
+extends:
+  template: azure_extend.yaml@azure_template
+  parameters:
+    REPO_NAME: pyspline
+    COMPLEX: true
+    GCC_CONFIG: config/defaults/config.LINUX_GFORTRAN.mk
+    INTEL_CONFIG: config/defaults/config.LINUX_INTEL.mk
+    INPUT_FILES: true
+    STYLE_CHECK: true
+
+
+
+
+# - job:
+#   - template: matrix.yaml@azure_template
+#   # strategy:
+#   #   matrix: ${{ parameters.TestMatrix }}
+#   steps:
+#   - script: echo here
+    # script: echo {{ parameters.TestMatrix }}
+    # - template: before-install.yaml@azure_template
+  #   parameters: 
+  #     REPO_NAME: ${{ variables.REPO_NAME }}
+  #     COMPLEX: ${{ variables.COMPLEX }}
+  #     GCC_CONFIG: ${{ variables.GCC_CONFIG }}
+  #     INTEL_CONFIG: ${{ variables.INTEL_CONFIG }}
+  #     INPUT_FILES: ${{ variables.INPUT_FILES }}
+  #     STYLE_CHECK: ${{ variables.STYLE_CHECK }}
+
+  # - template: style_check.yaml@azure_template
+  #   parameters:
+  #     REPO_NAME: ${{ variables.REPO_NAME }}
+  #     STYLE_CHECK: ${{ variables.STYLE_CHECK }}
+
