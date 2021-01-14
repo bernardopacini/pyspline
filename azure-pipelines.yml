@@ -15,7 +15,7 @@ extends:
     COMPLEX: false
     GCC_CONFIG: config/defaults/config.LINUX_GFORTRAN.mk
     INTEL_CONFIG: config/defaults/config.LINUX_INTEL.mk
-    INPUT_FILES: true
+    INPUT_FILES: false
     STYLE_CHECK: true
 
 
