@@ -17,7 +17,9 @@ extends:
     INTEL_CONFIG: config/defaults/config.LINUX_INTEL.mk
     INPUT_FILES: false
     STYLE_CHECK: true
-    STEPS_MAKE: docker exec app /bin/bash -c ". \$HOME/.bashrc_mdolab && cd ${{ variables.DOCKER_WORKING_DIR }} && make"
+    STEPS_MAKE: make
+    STEPS_INSTALL: pip install .
+    STEPS_TEST: testflo -v . -n 1
 
  
 
