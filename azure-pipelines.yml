@@ -21,22 +21,6 @@ extends:
     STEPS_INSTALL: pip install .
     STEPS_TEST: testflo -v . -n 1
 
-
-extends:
-  template: azure_extend.yaml@azure_template
-  parameters:
-    REPO_NAME: pyspline
-    COMPLEX: false
-    GCC_CONFIG: config/defaults/config.LINUX_GFORTRAN.mk
-    INTEL_CONFIG: config/defaults/config.LINUX_INTEL.mk
-    INPUT_FILES: false
-    STYLE_CHECK: true
-    STEPS_MAKE: make
-    STEPS_INSTALL: pip install .
-    STEPS_TEST: testflo -v . -n 1
-
-
-
 # - job:
 #   - template: matrix.yaml@azure_template
 #   # strategy:
